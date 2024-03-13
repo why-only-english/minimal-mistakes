@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "조각조각 Dev Piece"
+title                    : "적어놔라 기억해라"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Bell"
