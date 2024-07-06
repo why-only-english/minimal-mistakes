@@ -107,7 +107,7 @@ author:
   name             : "WhyWhyWhy"
   avatar           : "/assets/images/profile.jpg"  # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "공부기록 블로그"
-  location         : "Siheung, South Korea"
+  location         : "Seoul, South Korea"
   email            :
   links:
     - label: "Email"
