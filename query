@@ -1,0 +1,60 @@
+2024-07-30T23:23:54.647+09:00  INFO 26556 --- [nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-30T23:23:54.647+09:00  INFO 26556 --- [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-30T23:23:54.650+09:00  INFO 26556 --- [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-30T23:23:54.657+09:00 DEBUG 26556 --- [nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/honeytips/posts/1
+2024-07-30T23:23:54.663+09:00  INFO 26556 --- [nio-8080-exec-2] c.a.t.global.security.jwt.JwtProvider    : JwtProvider.isValidToken
+2024-07-30T23:23:54.663+09:00  INFO 26556 --- [nio-8080-exec-2] c.a.t.global.security.jwt.JwtProvider    : jwtToken = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0dG9rMTFAbmF2ZXIuY29tIiwiaWF0IjoxNzIyMzM1MDU3LCJleHAiOjE3MjI5Mzk4NTd9.xcZg05Lmr0-NBWRUmJpyMOkfITknOwDHiPqfOwg3pa0
+2024-07-30T23:23:54.691+09:00  INFO 26556 --- [nio-8080-exec-2] c.a.t.global.security.jwt.JwtProvider    : -------------- JwtProvider.getUserIdFromAccessToken: ttok11@naver.com
+2024-07-30T23:23:54.846+09:00  INFO 26556 --- [nio-8080-exec-2] p6spy                                    : #1722349434846 | took 16ms | statement | connection 1| url jdbc:mysql://ddoklip-v2-rdsdb.cpa6wk8m0mr3.ap-northeast-2.rds.amazonaws.com/ddoklip
+select m1_0.id,m1_0.created_by,m1_0.created_date,m1_0.deleted,m1_0.email,m1_0.fcm_token,m1_0.independent_month,m1_0.independent_year,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.nickname,m1_0.origin_name,m1_0.password,m1_0.provider,m1_0.role,m1_0.street from member m1_0 where m1_0.email=?
+select m1_0.id,m1_0.created_by,m1_0.created_date,m1_0.deleted,m1_0.email,m1_0.fcm_token,m1_0.independent_month,m1_0.independent_year,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.nickname,m1_0.origin_name,m1_0.password,m1_0.provider,m1_0.role,m1_0.street from member m1_0 where m1_0.email='ttok11@naver.com';
+2024-07-30T23:23:54.869+09:00  INFO 26556 --- [nio-8080-exec-2] p6spy                                    : #1722349434869 | took 6ms | statement | connection 1| url jdbc:mysql://ddoklip-v2-rdsdb.cpa6wk8m0mr3.ap-northeast-2.rds.amazonaws.com/ddoklip
+select p1_0.id,p1_0.created_by,p1_0.created_date,p1_0.deleted,p1_0.last_modified_by,p1_0.last_modified_date,p1_0.member_id,p1_0.profile_img_url from profile p1_0 where p1_0.member_id=?
+select p1_0.id,p1_0.created_by,p1_0.created_date,p1_0.deleted,p1_0.last_modified_by,p1_0.last_modified_date,p1_0.member_id,p1_0.profile_img_url from profile p1_0 where p1_0.member_id=30;
+2024-07-30T23:23:54.883+09:00  INFO 26556 --- [nio-8080-exec-2] p6spy                                    : #1722349434883 | took 5ms | commit | connection 1| url jdbc:mysql://ddoklip-v2-rdsdb.cpa6wk8m0mr3.ap-northeast-2.rds.amazonaws.com/ddoklip
+
+;
+2024-07-30T23:23:54.896+09:00  INFO 26556 --- [nio-8080-exec-2] c.a.t.global.security.jwt.JwtProvider    : ------------------JwtProvider.setContextHolder
+2024-07-30T23:23:54.896+09:00  INFO 26556 --- [nio-8080-exec-2] c.a.t.global.security.jwt.JwtProvider    : loginMember = ttok11@naver.com
+2024-07-30T23:23:54.896+09:00  INFO 26556 --- [nio-8080-exec-2] c.a.t.global.security.jwt.JwtProvider    : ------end------------JwtProvider.setContextHolder
+2024-07-30T23:23:54.912+09:00 DEBUG 26556 --- [nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/honeytips/posts/1
+2024-07-30T23:23:54.927+09:00  WARN 26556 --- [nio-8080-exec-2] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.api.ttoklip.domain.honeytip.post.controller.HoneyTipPostController
+2024-07-30T23:23:55.008+09:00  INFO 26556 --- [nio-8080-exec-2] p6spy                                    : #1722349435008 | took 8ms | statement | connection 2| url jdbc:mysql://ddoklip-v2-rdsdb.cpa6wk8m0mr3.ap-northeast-2.rds.amazonaws.com/ddoklip
+select distinct h1_0.id,h1_0.category,h1_0.content,h1_0.created_by,h1_0.created_date,h1_0.deleted,h1_0.last_modified_by,h1_0.last_modified_date,h1_0.member_id,h1_0.title from honey_tip h1_0 left join honey_tip_image h2_0 on h1_0.id=h2_0.honey_tip_id left join honey_tip_url h3_0 on h1_0.id=h3_0.honey_tip_id where h1_0.deleted=? and h1_0.id=?
+select distinct h1_0.id,h1_0.category,h1_0.content,h1_0.created_by,h1_0.created_date,h1_0.deleted,h1_0.last_modified_by,h1_0.last_modified_date,h1_0.member_id,h1_0.title from honey_tip h1_0 left join honey_tip_image h2_0 on h1_0.id=h2_0.honey_tip_id left join honey_tip_url h3_0 on h1_0.id=h3_0.honey_tip_id where h1_0.deleted=false and h1_0.id=1;
+2024-07-30T23:23:55.033+09:00  INFO 26556 --- [nio-8080-exec-2] p6spy                                    : #1722349435033 | took 6ms | statement | connection 2| url jdbc:mysql://ddoklip-v2-rdsdb.cpa6wk8m0mr3.ap-northeast-2.rds.amazonaws.com/ddoklip
+select distinct h1_0.id,h1_0.content,h1_0.created_by,h1_0.created_date,h1_0.deleted,h1_0.last_modified_by,h1_0.last_modified_date,h1_0.member_id,h1_0.parent_id,h1_0.honey_tip_id from comment h1_0 where h1_0.honey_tip_id=? and h1_0.dtype='HoneyTip' order by h1_0.parent_id asc,h1_0.created_date asc
+select distinct h1_0.id,h1_0.content,h1_0.created_by,h1_0.created_date,h1_0.deleted,h1_0.last_modified_by,h1_0.last_modified_date,h1_0.member_id,h1_0.parent_id,h1_0.honey_tip_id from comment h1_0 where h1_0.honey_tip_id=1 and h1_0.dtype='HoneyTip' order by h1_0.parent_id asc,h1_0.created_date asc;
+2024-07-30T23:23:55.057+09:00  INFO 26556 --- [nio-8080-exec-2] p6spy                                    : #1722349435057 | took 7ms | statement | connection 2| url jdbc:mysql://ddoklip-v2-rdsdb.cpa6wk8m0mr3.ap-northeast-2.rds.amazonaws.com/ddoklip
+select count(*) from honey_tip_like h1_0 where h1_0.honey_tip_id=?
+select count(*) from honey_tip_like h1_0 where h1_0.honey_tip_id=1;
+2024-07-30T23:23:55.066+09:00  INFO 26556 --- [nio-8080-exec-2] p6spy                                    : #1722349435066 | took 5ms | statement | connection 2| url jdbc:mysql://ddoklip-v2-rdsdb.cpa6wk8m0mr3.ap-northeast-2.rds.amazonaws.com/ddoklip
+select count(h1_0.id) from honey_tip_scrap h1_0 where h1_0.honey_tip_id=?
+select count(h1_0.id) from honey_tip_scrap h1_0 where h1_0.honey_tip_id=1;
+2024-07-30T23:23:55.077+09:00  INFO 26556 --- [nio-8080-exec-2] p6spy                                    : #1722349435077 | took 6ms | statement | connection 2| url jdbc:mysql://ddoklip-v2-rdsdb.cpa6wk8m0mr3.ap-northeast-2.rds.amazonaws.com/ddoklip
+select h1_0.id from honey_tip_like h1_0 where h1_0.honey_tip_id=? and h1_0.member_id=? limit ?
+select h1_0.id from honey_tip_like h1_0 where h1_0.honey_tip_id=1 and h1_0.member_id=30 limit 1;
+2024-07-30T23:23:55.087+09:00  INFO 26556 --- [nio-8080-exec-2] p6spy                                    : #1722349435087 | took 7ms | statement | connection 2| url jdbc:mysql://ddoklip-v2-rdsdb.cpa6wk8m0mr3.ap-northeast-2.rds.amazonaws.com/ddoklip
+select h1_0.id from honey_tip_scrap h1_0 where h1_0.honey_tip_id=? and h1_0.member_id=? limit ?
+select h1_0.id from honey_tip_scrap h1_0 where h1_0.honey_tip_id=1 and h1_0.member_id=30 limit 1;
+2024-07-30T23:23:55.108+09:00  INFO 26556 --- [nio-8080-exec-2] p6spy                                    : #1722349435108 | took 8ms | statement | connection 2| url jdbc:mysql://ddoklip-v2-rdsdb.cpa6wk8m0mr3.ap-northeast-2.rds.amazonaws.com/ddoklip
+select h1_0.honey_tip_id,h1_0.id,h1_0.created_by,h1_0.created_date,h1_0.deleted,h1_0.last_modified_by,h1_0.last_modified_date,h1_0.url from honey_tip_image h1_0 where h1_0.honey_tip_id=?
+select h1_0.honey_tip_id,h1_0.id,h1_0.created_by,h1_0.created_date,h1_0.deleted,h1_0.last_modified_by,h1_0.last_modified_date,h1_0.url from honey_tip_image h1_0 where h1_0.honey_tip_id=1;
+2024-07-30T23:23:55.128+09:00  INFO 26556 --- [nio-8080-exec-2] p6spy                                    : #1722349435128 | took 6ms | statement | connection 2| url jdbc:mysql://ddoklip-v2-rdsdb.cpa6wk8m0mr3.ap-northeast-2.rds.amazonaws.com/ddoklip
+select m1_0.id,m1_0.created_by,m1_0.created_date,m1_0.deleted,m1_0.email,m1_0.fcm_token,m1_0.independent_month,m1_0.independent_year,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.nickname,m1_0.origin_name,m1_0.password,m1_0.provider,m1_0.role,m1_0.street from member m1_0 where m1_0.id in(?,?,?)
+select m1_0.id,m1_0.created_by,m1_0.created_date,m1_0.deleted,m1_0.email,m1_0.fcm_token,m1_0.independent_month,m1_0.independent_year,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.nickname,m1_0.origin_name,m1_0.password,m1_0.provider,m1_0.role,m1_0.street from member m1_0 where m1_0.id in(2,1,11);
+2024-07-30T23:23:55.138+09:00  INFO 26556 --- [nio-8080-exec-2] p6spy                                    : #1722349435138 | took 7ms | statement | connection 2| url jdbc:mysql://ddoklip-v2-rdsdb.cpa6wk8m0mr3.ap-northeast-2.rds.amazonaws.com/ddoklip
+select p1_0.id,p1_0.created_by,p1_0.created_date,p1_0.deleted,p1_0.last_modified_by,p1_0.last_modified_date,p1_0.member_id,p1_0.profile_img_url from profile p1_0 where p1_0.member_id=?
+select p1_0.id,p1_0.created_by,p1_0.created_date,p1_0.deleted,p1_0.last_modified_by,p1_0.last_modified_date,p1_0.member_id,p1_0.profile_img_url from profile p1_0 where p1_0.member_id=1;
+2024-07-30T23:23:55.153+09:00  INFO 26556 --- [nio-8080-exec-2] p6spy                                    : #1722349435153 | took 11ms | statement | connection 2| url jdbc:mysql://ddoklip-v2-rdsdb.cpa6wk8m0mr3.ap-northeast-2.rds.amazonaws.com/ddoklip
+select p1_0.id,p1_0.created_by,p1_0.created_date,p1_0.deleted,p1_0.last_modified_by,p1_0.last_modified_date,p1_0.member_id,p1_0.profile_img_url from profile p1_0 where p1_0.member_id=?
+select p1_0.id,p1_0.created_by,p1_0.created_date,p1_0.deleted,p1_0.last_modified_by,p1_0.last_modified_date,p1_0.member_id,p1_0.profile_img_url from profile p1_0 where p1_0.member_id=2;
+2024-07-30T23:23:55.162+09:00  INFO 26556 --- [nio-8080-exec-2] p6spy                                    : #1722349435162 | took 6ms | statement | connection 2| url jdbc:mysql://ddoklip-v2-rdsdb.cpa6wk8m0mr3.ap-northeast-2.rds.amazonaws.com/ddoklip
+select p1_0.id,p1_0.created_by,p1_0.created_date,p1_0.deleted,p1_0.last_modified_by,p1_0.last_modified_date,p1_0.member_id,p1_0.profile_img_url from profile p1_0 where p1_0.member_id=?
+select p1_0.id,p1_0.created_by,p1_0.created_date,p1_0.deleted,p1_0.last_modified_by,p1_0.last_modified_date,p1_0.member_id,p1_0.profile_img_url from profile p1_0 where p1_0.member_id=11;
+2024-07-30T23:23:55.175+09:00  INFO 26556 --- [nio-8080-exec-2] p6spy                                    : #1722349435175 | took 6ms | statement | connection 2| url jdbc:mysql://ddoklip-v2-rdsdb.cpa6wk8m0mr3.ap-northeast-2.rds.amazonaws.com/ddoklip
+select h1_0.honey_tip_id,h1_0.id,h1_0.created_by,h1_0.created_date,h1_0.deleted,h1_0.last_modified_by,h1_0.last_modified_date,h1_0.url from honey_tip_url h1_0 where h1_0.honey_tip_id=?
+select h1_0.honey_tip_id,h1_0.id,h1_0.created_by,h1_0.created_date,h1_0.deleted,h1_0.last_modified_by,h1_0.last_modified_date,h1_0.url from honey_tip_url h1_0 where h1_0.honey_tip_id=1;
+2024-07-30T23:23:55.185+09:00  INFO 26556 --- [nio-8080-exec-2] p6spy                                    : #1722349435185 | took 6ms | commit | connection 2| url jdbc:mysql://ddoklip-v2-rdsdb.cpa6wk8m0mr3.ap-northeast-2.rds.amazonaws.com/ddoklip
+
+;
