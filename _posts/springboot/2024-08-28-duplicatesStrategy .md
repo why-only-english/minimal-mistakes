@@ -12,7 +12,19 @@ categories: Springboot
 ## 문제상황 및 해결과정
 
 1. swagger-ui 관련 코드는 외부 라이브러리
+    ![image](https://github.com/user-attachments/assets/5b2607bf-4b98-4f93-9acf-d94929876a01)
 2. 우리 프로젝트(스프링부트)에선 의존성 추가해서 사용
+    ```
+    // swagger
+    // exclude swagger annotation and use newer version due conflicts with avro serializer
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0") {
+    exclude group: "io.swagger.core.v3", module: "swagger-annotations"
+    }
+
+    // https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-annotations
+    implementation 'io.swagger.core.v3:swagger-annotations:2.2.15'
+    ```
+    
 3. 근데 똑립 버전으로 커스터마이징할 때 swagger-ui에 있는 파일(html, css 등)은 read_only이기 때문에 수정이 불가
 4. 그래서 swagger 깃허브 들어가서 오픈소스 다운 받고 우리 프로젝트 resource 부분에 직접 넣어서 커스텀
     
