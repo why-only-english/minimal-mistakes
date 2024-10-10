@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>스폰서 등록 final</title>
+    <style>
+      /* General Page Styling */
+      body {
+        margin: 0;
+        font-family: "Noto Sans KR", sans-serif;
+        background-color: #f9f9f9;
+      }
+
+      .sponsor-registration {
+        background-color: #fff;
+        display: flex;
+        max-width: 480px;
+        flex-direction: column;
+        overflow: hidden;
+        margin: 0 auto;
+      }
+
+      /* Top Bar */
+      .top-bar {
+        background-color: #f9f9f9;
+        display: flex;
+        justify-content: space-between;
+        padding: 16px 29px 16px 14px;
+      }
+
+      .logo {
+        aspect-ratio: 2.33;
+        object-fit: contain;
+        width: 28px;
+      }
+
+      .icon-group {
+        display: flex;
+        gap: 9px;
+      }
+
+      .icon {
+        aspect-ratio: 1.7;
+        object-fit: contain;
+        width: 17px;
+      }
+
+      /* Status Bar */
+      .status-bar {
+        background-color: #f3f5f7;
+        display: flex;
+        flex-direction: column;
+        width: 100%; /* Ensures the status bar is full width of its parent */
+        overflow: hidden; /* Hides any overflow content */
+      }
+
+      .status-bar-content {
+        display: flex;
+        justify-content: center; /* Centers the content horizontally */
+      }
+
+      .status-bar-image {
+        max-width: 100%; /* Prevents the image from exceeding the container’s width */
+        width: 100%; /* Ensures the image stretches to fit the container */
+        height: auto; /* Maintains aspect ratio of the image */
+        object-fit: cover; /* Scales the image to fill, cropping if necessary */
+      }
+
+      /* Main Content */
+      .main-content {
+        display: flex;
+        flex-direction: column;
+        padding: 0 24px;
+      }
+
+      .section-title {
+        color: #000;
+        font-weight: bold;
+        font-size: 16px;
+      }
+
+      /* Background Photo Section */
+      .background-photo-section {
+        width: 100%; /* Ensure it fits within the container */
+        padding: 14px; /* Add padding for spacing */
+        box-sizing: border-box; /* Ensure padding is included in the width calculation */
+        border-radius: 6px;
+        border: 0.6px solid #afafaf;
+        background-color: #f9f9f9;
+        display: flex;
+        flex-direction: column;
+        margin-top: 23px;
+      }
+
+      .photo-content {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .photo-wrapper {
+        position: relative;
+        width: 50px;
+      }
+
+      .profile-photo {
+        aspect-ratio: 1;
+        object-fit: contain;
+        width: 100%;
+        border-radius: 50%;
+      }
+
+      .photo-badge {
+        border-radius: 50%;
+        background-color: #000;
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        right: 2px;
+        bottom: 1px;
+        padding: 1px;
+      }
+
+      .photo-text {
+        display: flex;
+        flex-direction: column;
+        font-size: 12px;
+      }
+
+      .photo-title {
+        color: #000;
+        font-weight: 500;
+        font-size: 14px;
+      }
+
+      .photo-description {
+        margin-top: 6px;
+        color: #707070;
+        font-size: 12px;
+      }
+
+      /* Classification Section */
+      .classification-section {
+        margin-top: 16px;
+        width: 100%; /* Ensure it takes full width */
+      }
+
+      .classification-title {
+        font-size: 16px;
+        color: #000;
+        font-weight: 700;
+      }
+
+      .classification-options {
+        display: flex;
+        margin-top: 6px;
+        gap: 12px;
+        font-size: 12px;
+      }
+
+      .option {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      /* Form Sections */
+      .info-section,
+      .additional-info-section {
+        width: 100%; /* Make the form section full width */
+        margin-top: 20px;
+        box-sizing: border-box; /* Ensures padding is included in the width calculation */
+      }
+
+      .info-title {
+        font-size: 16px;
+        color: #000;
+        font-weight: 700;
+      }
+
+      .info-form {
+        margin-top: 11px;
+        width: 100%; /* Ensure full width for consistency */
+      }
+
+      .form-group {
+        margin-bottom: 16px;
+      }
+
+      .form-label {
+        color: #000;
+        font-weight: 700;
+        font-size: 12px;
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      /* Form Inputs */
+      .form-input {
+        width: 100%; /* Full width input */
+        padding: 12px; /* Space inside the input */
+        border-radius: 12px; /* Make the input fields more rounded */
+        border: 1px solid #61646b;
+        font-size: 14px;
+        color: #61646b;
+        box-sizing: border-box; /* Include padding within width calculations */
+      }
+
+      .phone-input {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+      }
+
+      .country-code {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        color: #000;
+        font-size: 14px;
+      }
+
+      /* Submit Button */
+      .submit-button {
+        border-radius: 24px;
+        background-color: #1a8eea;
+        margin-top: 38px;
+        width: 100%;
+        padding: 14px 0;
+        color: #fff;
+        font-weight: bold;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        box-sizing: border-box;
+      }
+
+      /* Mobile Navigation */
+      .mobile-nav {
+        border-top: 1px solid #efeff0;
+        background-color: #fff;
+        display: flex;
+        margin-top: 23px;
+        justify-content: space-between;
+        padding: 23px 28px;
+        font-size: 14px;
+      }
+
+      .nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #61646b;
+      }
+
+      .nav-icon {
+        width: 25px;
+        height: 25px;
+        margin-bottom: 6px;
+      }
+
+      /* 기본적으로 에러 메시지는 숨김 */
+      .error-message {
+        color: red;
+        display: none;
+        font-size: 12px;
+        margin-top: 4px;
+      }
+
+      /* 사용자가 입력 후, 이메일 형식이 잘못되었을 때만 에러 메시지 표시 */
+      input:invalid:not(:focus):not(:placeholder-shown) + .error-message {
+        display: block;
+      }
+
+      /* 유효할 때 스타일 */
+      input:valid {
+        border-color: #61646b;
+      }
+
+      /* 잘못된 형식일 때 스타일 */
+      input:invalid:not(:focus):not(:placeholder-shown) {
+        border-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <header class="top-bar">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/1ae56a17903064433a6e9c6e697e21f9fabf56785857a1f85ca18fcbdda87ac1?placeholderIfAbsent=true&apiKey=e71cf0c97ea747c5a507738a7b88cb7d"
+          alt="Logo"
+          class="logo"
+        />
+        <div class="icon-group">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/1a6320502f0509b3ed21cd3775b0df7db3b135372d5d46b0faa2704e10864e35?placeholderIfAbsent=true&apiKey=e71cf0c97ea747c5a507738a7b88cb7d"
+            alt=""
+            class="icon"
+          />
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/41606632e2fe88f4c8f84800f0ae4e93ca71d707d0ec102f4ad0da324d52ba68?placeholderIfAbsent=true&apiKey=e71cf0c97ea747c5a507738a7b88cb7d"
+            alt=""
+            class="icon"
+          />
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/c33478c1d93d09be6e188355002d26ab5332bbf974f41653a5b4128ee441820b?placeholderIfAbsent=true&apiKey=e71cf0c97ea747c5a507738a7b88cb7d"
+            alt=""
+            class="icon"
+          />
+        </div>
+      </header>
+
+      <div class="status-bar">
+        <div class="status-bar-content">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/13881478d48acf65d4fb4c1f1bf51ceb2fcc34a2d846b7884cba0b2d163a0c15?placeholderIfAbsent=true&apiKey=78a2c2508413491ca90d67ae1705ed00"
+            alt="Status bar"
+            class="status-bar-image"
+          />
+        </div>
+      </div>
+
+      <main class="main-content">
+        <h1 class="section-title">스폰서 등록</h1>
+
+        <div class="background-photo-section">
+          <div class="photo-content">
+            <div class="photo-wrapper">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/9153e3d8412eab1873ab199ca132ce4310e9d04b23966e0d226e27bbd94b1ba9?placeholderIfAbsent=true&apiKey=e71cf0c97ea747c5a507738a7b88cb7d"
+                alt="Profile"
+                class="profile-photo"
+              />
+              <div class="photo-badge">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/ff30e92fc972afba4a72b5676b2633a25443a8f491cf293c6166e1037e5855b0?placeholderIfAbsent=true&apiKey=e71cf0c97ea747c5a507738a7b88cb7d"
+                  alt=""
+                  class="icon"
+                />
+              </div>
+            </div>
+            <div class="photo-text">
+              <h2 class="photo-title">배경 사진</h2>
+              <p class="photo-description">
+                매력적인 배경 사진으로 당신의 멋을 뽐내보세요. 저처럼요~
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="classification-section">
+          <h2 class="classification-title">분류</h2>
+          <div class="classification-options">
+            <label class="option">
+              <input
+                type="radio"
+                name="classification"
+                class="visually-hidden"
+              />
+              <span>기업</span>
+            </label>
+            <label class="option">
+              <input
+                type="radio"
+                name="classification"
+                class="visually-hidden"
+              />
+              <span>지자체</span>
+            </label>
+          </div>
+        </div>
+
+        <form class="info-section">
+          <h2 class="info-title">정보</h2>
+          <div class="info-form">
+            <div class="form-group">
+              <label for="organization-name" class="form-label">단체명</label>
+              <input
+                type="text"
+                id="organization-name"
+                class="form-input"
+                placeholder="단체명을 입력해 주세요."
+              />
+            </div>
+            <div class="form-group">
+              <label for="title" class="form-label">제목</label>
+              <input
+                type="text"
+                id="title"
+                class="form-input"
+                placeholder="사용자에게 보일 제목을 입력하세요."
+              />
+            </div>
+          </div>
+        </form>
+
+        <form class="additional-info-section">
+          <h2 class="info-title">추가 정보</h2>
+          <div class="info-form">
+            <div class="form-group">
+              <label for="email" class="form-label">이메일</label>
+              <input
+                type="email"
+                id="email"
+                class="form-input"
+                placeholder="youremail@gmail.com"
+                required
+              />
+              <small class="error-message"
+                >올바른 이메일 형식을 입력해 주세요.</small
+              >
+            </div>
+            <!-- 전화번호 입력 필드 -->
+            <div class="form-group">
+              <label for="phone" class="form-label">전화번호</label>
+              <div class="phone-input">
+                <div class="country-code">
+                  <span>ID</span>
+                  <span>(+82)</span>
+                  <img
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/9e5df84c3b48c45598d02d74463aba682f1ccefed599dccc3b8090ef848d4e77?placeholderIfAbsent=true&apiKey=e71cf0c97ea747c5a507738a7b88cb7d"
+                    alt=""
+                    class="icon"
+                  />
+                </div>
+                <input
+                  type="tel"
+                  id="phone"
+                  class="form-input"
+                  placeholder="전화번호를 입력해 주세요."
+                  pattern="[0-9]{10,11}"
+                  title="10~11자리의"
+                  숫자만
+                  입력해
+                  주세요.
+                  required
+                />
+                <small class="error-message"
+                  >10~11자리의 숫자만 입력해 주세요.</small
+                >
+              </div>
+            </div>
+
+            <!-- 비상 연락처 입력 필드 -->
+            <div class="form-group">
+              <label for="emergency-contact" class="form-label"
+                >비상 연락처</label
+              >
+              <div class="phone-input">
+                <div class="country-code">
+                  <span>ID</span>
+                  <span>(+82)</span>
+                  <img
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/5e3709605791f68728aa744f5b8fc244fefe90122f1ddacca6f5a25c2b60eda7?placeholderIfAbsent=true&apiKey=e71cf0c97ea747c5a507738a7b88cb7d"
+                    alt=""
+                    class="icon"
+                  />
+                </div>
+                <input
+                  type="tel"
+                  id="emergency-contact"
+                  class="form-input"
+                  placeholder="비상 연락처를 입력해 주세요."
+                  pattern="[0-9]{10,11}"
+                  title="10~11자리의숫자만"
+                  입력해
+                  주세요.
+                  required
+                />
+                <small class="error-message"
+                  >10~11자리의 숫자만 입력해 주세요.</small
+                >
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <button type="submit" class="submit-button">등록</button>
+      </main>
+
+      <nav class="mobile-nav">
+        <div class="nav-item">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/173e397ed1beb789d06a11541dded0633ba48d743b7cfbfd12083a32088365ca?placeholderIfAbsent=true&apiKey=e71cf0c97ea747c5a507738a7b88cb7d"
+            alt=""
+            class="nav-icon"
+          />
+          <span>Home</span>
+        </div>
+        <div class="nav-item">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/ff2afd4fd7e82a31075d30b959d829cbcfb8363a5ce3e525e0b0575d0ead3ba0?placeholderIfAbsent=true&apiKey=e71cf0c97ea747c5a507738a7b88cb7d"
+            alt=""
+            class="nav-icon"
+          />
+          <span>Sponsor</span>
+        </div>
+        <div class="nav-item">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/824120e59288d47f3cc2479e3258d44e317803c2895f58a038e84518afbf0e85?placeholderIfAbsent=true&apiKey=e71cf0c97ea747c5a507738a7b88cb7d"
+            alt=""
+            class="nav-icon"
+          />
+          <span>Sell Contents</span>
+        </div>
+        <div class="nav-item">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/230855f9bb3deb56556659759a3d63b66d3a71fab94ee832151017a01bb176c1?placeholderIfAbsent=true&apiKey=e71cf0c97ea747c5a507738a7b88cb7d"
+            alt=""
+            class="nav-icon"
+          />
+          <span>Profile</span>
+        </div>
+      </nav>
+    </section>
+  </body>
+</html>
